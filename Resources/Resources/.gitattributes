@@ -1,0 +1,5 @@
+*.mlmodelc filter=lfs diff=lfs merge=lfs -text
+SafetyChecker.mlmodelc filter=lfs diff=lfs merge=lfs -text
+TextEncoder.mlmodelc filter=lfs diff=lfs merge=lfs -text
+Unet.mlmodelc filter=lfs diff=lfs merge=lfs -text
+VAEDecoder.mlmodelc filter=lfs diff=lfs merge=lfs -text
