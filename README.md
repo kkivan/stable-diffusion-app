@@ -1,2 +1,2 @@
 # stable-diffusion-app
-Simple stable diffusion app for iOS iPadOS MacOS
+Simple stable diffusion app for ~~iOS~~(memory issue) ~~iPadOS~~(same) MacOS
