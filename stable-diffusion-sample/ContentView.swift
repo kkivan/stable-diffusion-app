@@ -91,10 +91,10 @@ class Model: ObservableObject {
         q.async {
             do {
                 let pipeline = try StableDiffusionPipeline(resourcesAt: resourceURL)
-                let seed = 93 //Int.random(in: Int.min...Int.max)
-                let cgImage = try pipeline.generateImages(prompt: input, seed: seed).first!!
+                let seed = Int.random(in: 5...100)
+                let images = try pipeline.generateImages(prompt: input, seed: seed).compactMap { $0 } 
                 DispatchQueue.main.async {
-                    self.image = .generated(image: cgImage, input: input, time: Int(startedAt.distance(to: Date())))
+                    self.image = .generated(image: images.first!, input: input, time: Int(startedAt.distance(to: Date())))
                 }
             } catch {
                 self.image = .error(error)
