@@ -1,0 +1,122 @@
+[
+  {
+    "shortDescription" : "Stable Diffusion generates images conditioned on text and\/or other images as input through the diffusion process. Please refer to https:\/\/arxiv.org\/abs\/2112.10752 for details.",
+    "metadataOutputVersion" : "3.0",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32)",
+        "shortDescription" : "Identical to the input `images`. If safety checker detected any sensitive content, the corresponding image is replaced with a blank image (zeros)",
+        "shape" : "[]",
+        "name" : "filtered_images",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32)",
+        "shortDescription" : "Indicates whether the safety checker model found any sensitive content in the given image",
+        "shape" : "[]",
+        "name" : "has_nsfw_concepts",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32)",
+        "shortDescription" : "Concept scores are the scores before thresholding at zero yields the `has_nsfw_concepts` output. These scores can be used to tune the `adjustment` input",
+        "shape" : "[]",
+        "name" : "concept_scores",
+        "type" : "MultiArray"
+      }
+    ],
+    "version" : "CompVis\/stable-diffusion-v1-4",
+    "modelParameters" : [
+
+    ],
+    "author" : "Please refer to the Model Card available at huggingface.co\/CompVis\/stable-diffusion-v1-4",
+    "specificationVersion" : 7,
+    "storagePrecision" : "Float16",
+    "license" : "OpenRAIL (https:\/\/huggingface.co\/spaces\/CompVis\/stable-diffusion-license)",
+    "mlProgramOperationTypeHistogram" : {
+      "Transpose" : 121,
+      "Ios16.scatterNd" : 1,
+      "Ios16.softmax" : 24,
+      "Ios16.linear" : 147,
+      "Ios16.add" : 51,
+      "Concat" : 1,
+      "Ios16.realDiv" : 1,
+      "Ios16.sigmoid" : 24,
+      "Ios16.reduceSum" : 3,
+      "Tile" : 4,
+      "Ios16.greater" : 4,
+      "Shape" : 1,
+      "ExpandDims" : 5,
+      "Ios16.cast" : 9,
+      "Ios16.clip" : 1,
+      "Ios16.conv" : 1,
+      "Ios16.abs" : 1,
+      "Ios16.layerNorm" : 50,
+      "Ios16.matmul" : 48,
+      "Ios16.pow" : 2,
+      "Ios16.reshape" : 193,
+      "SliceByIndex" : 2,
+      "Ios16.mul" : 73,
+      "NonZero" : 1
+    },
+    "computePrecision" : "Mixed (Float32, Float16, Int32)",
+    "isUpdatable" : "0",
+    "availability" : {
+      "macOS" : "13.0",
+      "tvOS" : "16.0",
+      "watchOS" : "9.0",
+      "iOS" : "16.0",
+      "macCatalyst" : "16.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_mlProgram"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 3 × 224 × 224)",
+        "shortDescription" : "The normalized image input tensor resized to (224x224) in channels-first (BCHW) format",
+        "shape" : "[1, 3, 224, 224]",
+        "name" : "clip_input",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 512 × 512 × 3)",
+        "shortDescription" : "Output of the vae_decoder (512x512) in channels-last (BHWC) format",
+        "shape" : "[1, 512, 512, 3]",
+        "name" : "images",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1)",
+        "shortDescription" : "Bias added to the concept scores to trade off increased recall for reduce precision in the safety checker classifier",
+        "shape" : "[1]",
+        "name" : "adjustment",
+        "type" : "MultiArray"
+      }
+    ],
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.version" : "6.1",
+      "com.github.apple.coremltools.source" : "torch==1.13.0"
+    },
+    "generatedClassName" : "Stable_Diffusion_version_CompVis_stable_diffusion_v1_4_safety_checker",
+    "method" : "predict"
+  }
+]
